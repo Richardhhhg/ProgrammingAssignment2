@@ -24,12 +24,15 @@ makeCacheMatrix <- function(x = matrix()) {
 
 # returning the inverse matrix 
 cacheSolve <- function(x, ...) {
-    # checking whether or not the inverse matrix has been cached
+    # assigning the current matrix to the inverse matrix variable
     inverse_matrix <- x$get_inverse_matrix()
+    
+    # if the inverse matrix has been cached, the inverse matrix is returned
     if(!is.null(inverse_matrix)) {
         return(inverse_matrix)
     }
-    # if inverse matrix has not been cached
+    
+    # if the inverse matrix has not been cached, it gets solved and cached
     data <- x$get()
     inverse_matrix <- solve(data)
     x$set_inverse_matrix(inverse_matrix)
